@@ -28,7 +28,7 @@ document.addEventListener("keydown", function(event) {
 
     if(event.key == "Enter" && indice == 6){
         
-        
+        palabraFormada = "";
         for(let i = 0; i < 6; i++){
             let letra = document.getElementById(i).innerHTML;
             palabraFormada = palabraFormada + letra;
@@ -55,7 +55,9 @@ document.addEventListener("keydown", function(event) {
                 }
             }
         }
-        console.log(palabraFormada === palabraCorrecta);
+        console.log("Correcta:",palabraFormada == palabraCorrecta);
+        console.log("Forma:",palabraFormada);
+        console.log("Era:",palabraCorrecta);
     }
 });
 
