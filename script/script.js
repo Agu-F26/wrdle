@@ -2,6 +2,28 @@ function numeroRandom(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+function calculaTiempo(t1, t2){
+    let t3 = t2 - t1;
+    let m = 0;
+    let s = 0;
+    let tiempo = "";
+
+    while(t3 > 1000){
+        t3 = t3-1000;
+        s++;
+    }
+    while(s > 59){
+        s = s-60;
+        m++;
+    }
+    if(m > 0){
+        tiempo = m + " minutos "+ s +" segundos.";
+    }
+    else{
+        tiempo = s + " segundos.";
+    }
+    return tiempo;
+}
 
 let indice = 0;
 let palabraFormada = "";
@@ -9,6 +31,7 @@ let palabraCorrecta = palabra[numeroRandom(0, palabra.length)];
 let existe = false;
 let vidas = 6;
 let correcta = false;
+let tiempoA = new Date();
 
 console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
@@ -70,6 +93,9 @@ document.addEventListener("keydown", function(event) {
         }
         if(palabraFormada == palabraCorrecta){
             correcta = true;
+            let tiempoB = new Date();
+
+            console.log(calculaTiempo(tiempoA, tiempoB));
             document.getElementById("body").style.backgroundColor = "#022100";
             document.getElementById("vidas").style.backgroundColor = "transparent";
             document.getElementById("vidas").style.opacity = "0";
