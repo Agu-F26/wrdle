@@ -8,6 +8,7 @@ let palabraFormada = "";
 let palabraCorrecta = palabra[numeroRandom(0, palabra.length)];
 let existe = false;
 let vidas = 6;
+let correcta = false;
 
 console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
@@ -21,20 +22,20 @@ document.addEventListener("keypress", function(event) {
 });
 
 document.addEventListener("keydown", function(event) {
-    if(indice > 0 && event.key == "Backspace" && vidas > 0){    
+    if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){    
         console.log(indice,event.key);
         indice--;
         document.getElementById(indice).style.color = "transparent";
     }
 
-    if(event.key == "Enter" && indice == 6 && vidas > 0){
+    if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){
         
         vidas--;
         palabraFormada = "";
         for(let i = 0; i < 6; i++){
             let letra = document.getElementById(i).innerHTML;
             palabraFormada = palabraFormada + letra;
-            if(letra === palabraCorrecta[i]){
+            if(letra == palabraCorrecta[i]){
                 document.getElementById(i).style.color = "#19f002";
                 document.getElementById(i).style.backgroundColor = "#042101";
                 document.getElementById(i).style.border = "solid #19f002";
@@ -57,6 +58,10 @@ document.addEventListener("keydown", function(event) {
                 }
             }
         }
+        if(palabraFormada == palabraCorrecta){
+            correcta = true;
+            document.getElementById("body").style.backgroundColor = "#022100";
+        }   
         console.log("Correcta:",palabraFormada == palabraCorrecta);
         console.log("Forma:",palabraFormada);
         console.log("Era:",palabraCorrecta);
@@ -82,10 +87,7 @@ document.addEventListener("keydown", function(event) {
                 document.getElementById(i).style.color = "#c7c7c7";
             }
         }, 250);
-        document.removeEventListener("keydown", function(event){});
-        document.removeEventListener("keypress", function(event){});
-
-        
+        document.getElementById("body").style.backgroundColor = "#210000";
     }
 });
 

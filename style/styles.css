@@ -1,6 +1,7 @@
 body{
     background-color: #292b2e;
     margin: 0 auto;
+    transition: ease-in-out 1000ms;
 }
 
 .container-general{
