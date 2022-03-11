@@ -82,7 +82,8 @@ document.addEventListener("keydown", function(event) {
                 document.getElementById(i).style.color = "#c7c7c7";
             }
         }, 250);
-
+        document.removeEventListener("keydown", function(event){});
+        document.removeEventListener("keypress", function(event){});
 
         
     }
