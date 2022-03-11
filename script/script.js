@@ -17,10 +17,12 @@ function calculaTiempo(t1, t2){
         m++;
     }
     if(m > 0){
-        tiempo = m + " minutos "+ s +" segundos.";
+        if(m == 1) tiempo = "1 minuto "+ s +" segundos.";
+        else tiempo = m + " minutos "+ s +" segundos.";
     }
     else{
-        tiempo = s + " segundos.";
+        if(s == 1) tiempo = "1 segundo."
+        else tiempo = s + " segundos.";
     }
     return tiempo;
 }
