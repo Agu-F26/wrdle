@@ -31,6 +31,16 @@ document.addEventListener("keydown", function(event) {
     if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){
         
         vidas--;
+        document.getElementById("vidas").style.color = "transparent";
+        if(vidas != 0){
+            setTimeout(() => {
+                document.getElementById("vidas").innerHTML = vidas;
+                document.getElementById("vidas").style.color = "#c7c7c7";
+            }, 400);
+        }
+        
+        
+
         palabraFormada = "";
         for(let i = 0; i < 6; i++){
             let letra = document.getElementById(i).innerHTML;
@@ -61,6 +71,15 @@ document.addEventListener("keydown", function(event) {
         if(palabraFormada == palabraCorrecta){
             correcta = true;
             document.getElementById("body").style.backgroundColor = "#022100";
+            document.getElementById("vidas").style.backgroundColor = "transparent";
+            document.getElementById("vidas").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("vidas").innerHTML = "<a href=\"\"><img src=\"style/arrow-repeat.svg\" alt=\"\"></a>"
+            }, 200);
+            
+            setTimeout(() => {
+                document.getElementById("vidas").style.opacity = "1";
+            }, 800);
         }   
         console.log("Correcta:",palabraFormada == palabraCorrecta);
         console.log("Forma:",palabraFormada);
@@ -69,6 +88,8 @@ document.addEventListener("keydown", function(event) {
     }
 
     if(event.key == "Enter" && indice == 6 && vidas == 0){
+        document.getElementById("vidas").style.backgroundColor = "transparent";
+        document.getElementById("vidas").style.opacity = "0";
         for(let i = 0; i < 6; i++){
             document.getElementById(i).style.color = "#c7c7c7";
             document.getElementById(i).style.backgroundColor = "#262626";
@@ -88,6 +109,14 @@ document.addEventListener("keydown", function(event) {
             }
         }, 250);
         document.getElementById("body").style.backgroundColor = "#210000";
+        setTimeout(() => {
+            document.getElementById("vidas").innerHTML = "<a href=\"\"><img src=\"style/arrow-repeat.svg\" alt=\"\"></a>"
+        }, 200);
+        
+        setTimeout(() => {
+            document.getElementById("vidas").style.opacity = "1";
+        }, 800);
+        
     }
 });
 
