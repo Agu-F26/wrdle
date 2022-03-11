@@ -2,6 +2,7 @@ function numeroRandom(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+
 let indice = 0;
 let palabraFormada = "";
 let palabraCorrecta = palabra[numeroRandom(0, palabra.length)];
@@ -20,14 +21,15 @@ document.addEventListener("keypress", function(event) {
 });
 
 document.addEventListener("keydown", function(event) {
-    if(indice > 0 && event.key == "Backspace"){    
+    if(indice > 0 && event.key == "Backspace" && vidas > 0){    
         console.log(indice,event.key);
         indice--;
         document.getElementById(indice).style.color = "transparent";
     }
 
-    if(event.key == "Enter" && indice == 6){
+    if(event.key == "Enter" && indice == 6 && vidas > 0){
         
+        vidas--;
         palabraFormada = "";
         for(let i = 0; i < 6; i++){
             let letra = document.getElementById(i).innerHTML;
@@ -58,6 +60,31 @@ document.addEventListener("keydown", function(event) {
         console.log("Correcta:",palabraFormada == palabraCorrecta);
         console.log("Forma:",palabraFormada);
         console.log("Era:",palabraCorrecta);
+        console.log("Quedan",vidas,"vidas.");
+    }
+
+    if(event.key == "Enter" && indice == 6 && vidas == 0){
+        for(let i = 0; i < 6; i++){
+            document.getElementById(i).style.color = "#c7c7c7";
+            document.getElementById(i).style.backgroundColor = "#262626";
+            document.getElementById(i).style.border = "solid #c7c7c7";
+            document.getElementById(i).style.color = "transparent";
+        }
+
+        setTimeout(() => {
+            document.getElementById(0).innerHTML = "0";       
+            document.getElementById(1).innerHTML = "v";
+            document.getElementById(2).innerHTML = "i";
+            document.getElementById(3).innerHTML = "d";
+            document.getElementById(4).innerHTML = "a";
+            document.getElementById(5).innerHTML = "s";
+            for(let i = 0; i < 6; i++){
+                document.getElementById(i).style.color = "#c7c7c7";
+            }
+        }, 250);
+
+
+        
     }
 });
 
