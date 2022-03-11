@@ -74,8 +74,10 @@ document.addEventListener("keydown", function(event) {
             document.getElementById("vidas").style.backgroundColor = "transparent";
             document.getElementById("vidas").style.opacity = "0";
             setTimeout(() => {
+                console.log(document.getElementById("vidas").innerHTML)
+                document.getElementById("vidas").innerHTML = "a"
                 document.getElementById("vidas").innerHTML = "<a href=\"\"><img src=\"style/arrow-repeat.svg\" alt=\"\"></a>"
-            }, 200);
+            }, 500);
             
             setTimeout(() => {
                 document.getElementById("vidas").style.opacity = "1";
