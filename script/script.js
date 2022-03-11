@@ -94,8 +94,10 @@ document.addEventListener("keydown", function(event) {
         if(palabraFormada == palabraCorrecta){
             correcta = true;
             let tiempoB = new Date();
+            let tiempo = calculaTiempo(tiempoA, tiempoB);
+            document.getElementById("timer").innerHTML = tiempo;
 
-            console.log(calculaTiempo(tiempoA, tiempoB));
+            //console.log(calculaTiempo(tiempoA, tiempoB));
             document.getElementById("body").style.backgroundColor = "#022100";
             document.getElementById("vidas").style.backgroundColor = "transparent";
             document.getElementById("vidas").style.opacity = "0";
@@ -107,8 +109,14 @@ document.addEventListener("keydown", function(event) {
             
             setTimeout(() => {
                 document.getElementById("vidas").style.opacity = "1";
+                document.getElementById("timer").style.opacity = "1";
             }, 800);
         }   
+
+        
+
+        
+
         console.log("Correcta:",palabraFormada == palabraCorrecta);
         console.log("Forma:",palabraFormada);
         console.log("Era:",palabraCorrecta);
@@ -145,6 +153,9 @@ document.addEventListener("keydown", function(event) {
             document.getElementById("vidas").style.opacity = "1";
         }, 800);
         
+        
+
+
     }
 });
 
