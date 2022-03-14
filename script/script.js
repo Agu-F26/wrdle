@@ -81,7 +81,7 @@ document.addEventListener("keydown", function(event) {
 
     if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){
         
-        vidas--;
+        
         document.getElementById("vidas").style.color = "transparent";
         if(vidas != 0){
             setTimeout(() => {
@@ -143,7 +143,8 @@ document.addEventListener("keydown", function(event) {
                 document.getElementById("timer").style.opacity = "1";
                 document.getElementById("score").style.opacity = "1";
             }, 800);
-        }   
+        }
+        else vidas--;   
 
         
 
