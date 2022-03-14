@@ -33,11 +33,17 @@ let palabraCorrecta = palabra[numeroRandom(0, palabra.length)];
 let existe = false;
 let vidas = 6;
 let correcta = false;
-let tiempoA = new Date();
+var tiempoA = ""
+let start = false;
 
 console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
 document.addEventListener("keypress", function(event) {
+    if (start == false){
+        tiempoA = new Date();
+        start = true;
+        console.log(start,tiempoA);
+    }
     if(indice < 6 && event.key != "Enter"){
         document.getElementById(indice).style.color = "white";
         console.log(indice,event.key);
@@ -95,8 +101,8 @@ document.addEventListener("keydown", function(event) {
         }
         if(palabraFormada == palabraCorrecta){
             correcta = true;
-            let tiempoB = new Date();
-            let tiempo = calculaTiempo(tiempoA, tiempoB);
+            var tiempoB = new Date();
+            var tiempo = calculaTiempo(tiempoA, tiempoB);
             document.getElementById("timer").innerHTML = tiempo;
 
             //console.log(calculaTiempo(tiempoA, tiempoB));
