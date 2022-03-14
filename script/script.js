@@ -4,12 +4,16 @@ function numeroRandom(min, max) {
 
 function calculaTiempo(t1, t2){
     let t3 = t2 - t1;
+    return t3;
+}
+
+function stringTiempo(t){
+    let tiempo = "";
     let m = 0;
     let s = 0;
-    let tiempo = "";
 
-    while(t3 > 1000){
-        t3 = t3-1000;
+    while(t > 1000){
+        t = t-1000;
         s++;
     }
     while(s > 59){
@@ -25,6 +29,22 @@ function calculaTiempo(t1, t2){
         else tiempo = s + " segundos.";
     }
     return tiempo;
+}
+
+function calculaPuntaje(tiempo,vidas){
+    let puntaje = 100000;
+    vidas++; //porque te resta 1 cuando tocas enter aunque sea correcta
+    let intentos = 6 - vidas;
+    let puntajeString = "";
+    console.log(puntaje,"-",tiempo);
+    puntaje = puntaje - (tiempo / 2);
+    console.log(puntaje,"/",intentos);
+    puntaje = puntaje / intentos;
+
+    puntajeString = puntaje + " puntos.";
+    if (puntaje > 0) return puntajeString;
+    else return "Sin puntos.";
+    
 }
 
 let indice = 0;
@@ -102,8 +122,11 @@ document.addEventListener("keydown", function(event) {
         if(palabraFormada == palabraCorrecta){
             correcta = true;
             var tiempoB = new Date();
-            var tiempo = calculaTiempo(tiempoA, tiempoB);
+            var tiempo = stringTiempo(calculaTiempo(tiempoA, tiempoB));
+            let puntaje = calculaPuntaje(calculaTiempo(tiempoA,tiempoB),vidas);
+
             document.getElementById("timer").innerHTML = tiempo;
+            document.getElementById("score").innerHTML = puntaje;
 
             //console.log(calculaTiempo(tiempoA, tiempoB));
             document.getElementById("body").style.backgroundColor = "#022100";
@@ -118,6 +141,7 @@ document.addEventListener("keydown", function(event) {
             setTimeout(() => {
                 document.getElementById("vidas").style.opacity = "1";
                 document.getElementById("timer").style.opacity = "1";
+                document.getElementById("score").style.opacity = "1";
             }, 800);
         }   
 
