@@ -33,7 +33,6 @@ function stringTiempo(t){
 
 function calculaPuntaje(tiempo,vidas){
     let puntaje = 100000;
-    vidas++; //porque te resta 1 cuando tocas enter aunque sea correcta
     let intentos = 6 - vidas;
     let puntajeString = "";
     console.log(puntaje,"-",tiempo);
@@ -76,7 +75,7 @@ document.addEventListener("keydown", function(event) {
     if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){    
         console.log(indice,event.key);
         indice--;
-        document.getElementById(indice).style.color = "transparent";
+        document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
     }
 
     if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){

@@ -49,6 +49,8 @@ body{
     width:30%;
     text-align: left;
     opacity: 0;
+    transition: ease-in-out 1000ms;
+
 }
 
 .timer{
