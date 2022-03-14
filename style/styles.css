@@ -20,6 +20,19 @@ body{
     margin-top: 5rem;
 }
 
+
+.bloque{
+    background-color: #262626;
+    border: solid #c7c7c7;
+    color: transparent;
+    border-radius: 1rem;
+    margin: 1rem;
+    font-size: 60px;
+    padding: 1rem 3rem;
+    transition: ease-in-out 250ms;
+}
+
+
 .vidas{
     font-size: 80px;
     background-color: #262626;
@@ -59,15 +72,4 @@ body{
     opacity: 0;
     transition: ease-in-out 1000ms;
 
-}
-
-.bloque{
-    background-color: #262626;
-    border: solid #c7c7c7;
-    color: transparent;
-    border-radius: 1rem;
-    margin: 1rem;
-    font-size: 60px;
-    padding: 1rem 3rem;
-    transition: ease-in-out 250ms;
 }
