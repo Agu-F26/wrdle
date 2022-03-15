@@ -64,19 +64,41 @@ document.addEventListener("keypress", function(event) {
         start = true;
         console.log(start,tiempoA);
     }
-    if(indice < 6 && event.key != "Enter"){
+    if(indice < 6 && event.key != "Enter" && event.key != "Backspace"){
         document.getElementById(indice).style.color = "white";
         console.log(indice,event.key);
-        if(correctas[indice] == false) document.getElementById(indice).innerHTML = event.key;
-        indice++;           
+        if(correctas[indice] == false){
+            document.getElementById(indice).innerHTML = event.key;
+            indice++;           
+        }
+        else{
+            while(correctas[indice] == true){
+                indice++;
+            }
+        } 
     }        
 });
 
 document.addEventListener("keydown", function(event) {
     if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){
         console.log(indice,event.key);
-        indice--;
-        document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
+        console.log("xd");
+        if(correctas[indice-1] == false || indice > 5){
+            console.log("entre if");
+            indice--;
+            document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
+        }
+        else{
+            console.log("asdasd");
+            for(let i = indice-1; i > -1; i--){
+                if(correctas[i] == false){
+                    console.log(i, correctas[i] == false)
+                    document.getElementById(i).style.color = "rgba(255,255,255,0.1)";
+                    indice = i;
+                    break;
+                }
+            }
+        }
     }
 
     if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){
@@ -120,6 +142,7 @@ document.addEventListener("keydown", function(event) {
                 }
             }
         }
+
         if(palabraFormada == palabraCorrecta){
             correcta = true;
             var tiempoB = new Date();
