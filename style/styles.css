@@ -53,6 +53,8 @@ body{
     font-size: 60px;
     padding: 1rem 3rem;
     transition: ease-in-out 250ms;
+    height: 80px;
+    width: 30px;
 }
 
 
