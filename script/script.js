@@ -135,7 +135,7 @@ document.addEventListener("keydown", function(event) {
                 console.log(document.getElementById("vidas").innerHTML)
                 document.getElementById("vidas").innerHTML = "a"
                 document.getElementById("vidas").innerHTML = "<a href=\"\"><img src=\"style/arrow-repeat.svg\" alt=\"\"></a>"
-            }, 300);
+            }, 400);
             
             setTimeout(() => {
                 document.getElementById("vidas").style.opacity = "1";
