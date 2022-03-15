@@ -187,7 +187,7 @@ document.addEventListener("keydown", function(event) {
         console.log("Quedan",vidas,"vidas.");
     }
 
-    if(event.key == "Enter" && indice == 6 && vidas == 0){
+    if(event.key == "Enter" && vidas == 0 && document.getElementById(5).innerHTML != "0"){
         document.getElementById("vidas").style.backgroundColor = "transparent";
         document.getElementById("vidas").style.opacity = "0";
         for(let i = 0; i < 6; i++){
