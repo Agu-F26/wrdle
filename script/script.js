@@ -72,12 +72,13 @@ document.addEventListener("keypress", function(event) {
             indice++;          
         }
         else{
-            console.log("asdasd");
+            console.log("else ingreso");
             for(let i = indice; i < 7; i++){
                 if(correctas[i] == false){
                     console.log(i, correctas[i] == false)
+                    document.getElementById(i).innerHTML = event.key;
                     document.getElementById(i).style.color = "white";
-                    indice = i;
+                    indice = i + 1;
                     break;
                 }
             }
