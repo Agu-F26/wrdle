@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>W0RDL3 - ¿Cómo jugar?</title>
+    <link rel="stylesheet" href="style/styles.css">
+</head>
+<body id="body">
+    <script src="script/palabras.js"></script>
+    <div class="tutorial">
+        <h2>¿Cómo jugar?</h2>
+        <p>Tenés 6 intentos para adivinar una palabra aleatoria de 6 letras, con un tiempo que empieza a contar a partir de tu primer intento.</p>
+        <p>Cada intento muestra si la letra ingresada es 
+        <strong class="texto-tut" style="color: #19f002; background-color: #042101; border: solid #19f002">correcta</strong>, si la letra 
+        <strong class="texto-tut" style="color: #ffbf00; background-color: #302400; border: solid #ffbf00">va en otra posicion</strong>, o si es 
+        <strong class="texto-tut" style="color: #ff0000; background-color: #300000; border: solid #ff0000">incorrecta</strong></p>
+        <p>de la siguiente manera... Todas erroneas:</p>
+        <p><img src="tutorial/tut1.png" alt=""></p>
+        <p>Letras que van en otra posición: </p>
+        <img src="tutorial/tut2.png" alt="">
+        <p>Algunas letras correctas:</p>
+        <img src="tutorial/tut3.png" alt="">
+        <p>Todas correctas:</p>
+        <img src="tutorial/tut4.png" alt="">
+        <p>Si adivinas la palabra aparecerá en la pantalla un un puntaje seguido de tu tiempo. Éste puntaje está basado en el tiempo que tardaste y en la cantidad de intentos.</p>
+        <p>Cada partida tiene una palabra seleccionada aleatoriamente de la lista de
+        <script>
+            document.write(palabra.length); 
+        </script>
+        palabras.
+    </div>
+</body>
+</html>
