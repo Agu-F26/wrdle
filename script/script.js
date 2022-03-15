@@ -135,7 +135,7 @@ document.addEventListener("keydown", function(event) {
                 console.log(document.getElementById("vidas").innerHTML)
                 document.getElementById("vidas").innerHTML = "a"
                 document.getElementById("vidas").innerHTML = "<a href=\"\"><img src=\"style/arrow-repeat.svg\" alt=\"\"></a>"
-            }, 500);
+            }, 300);
             
             setTimeout(() => {
                 document.getElementById("vidas").style.opacity = "1";
@@ -179,7 +179,7 @@ document.addEventListener("keydown", function(event) {
         document.getElementById("body").style.backgroundColor = "#210000";
         setTimeout(() => {
             document.getElementById("vidas").innerHTML = "<a href=\"\"><img src=\"style/arrow-repeat.svg\" alt=\"\"></a>"
-        }, 200);
+        }, 400);
         
         setTimeout(() => {
             document.getElementById("vidas").style.opacity = "1";
