@@ -5,8 +5,31 @@ body{
     user-select: none;
 }
 
+.header{
+    display:flex;
+    margin: 0 auto;
+    width: 80%;
+
+}
+
+.header a{
+    color: #c7c7c7;
+    text-decoration: none;
+}
+
+.logo{
+    font-size: 50px;
+    min-width: 50%;
+}
+
+.linkTutorial{
+    font-size: 30px;
+    min-width: 50%;
+    text-align: right;
+    margin-top: 1rem;
+}
 .container-general{
-    min-height: 96vh;
+    min-height: 86vh;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -72,4 +95,18 @@ body{
     opacity: 0;
     transition: ease-in-out 1000ms;
 
+}
+
+.tutorial{
+    margin: 0 auto;
+    width: 80%;
+    font-size: 25px;
+    color: white;
+}
+
+.texto-tut{
+    background-color: #262626;
+    border: solid #c7c7c7;
+    border-radius: 0.4rem;
+    padding: .1rem 1rem;
 }
