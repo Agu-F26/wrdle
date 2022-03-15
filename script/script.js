@@ -4,12 +4,16 @@ function numeroRandom(min, max) {
 
 function calculaTiempo(t1, t2){
     let t3 = t2 - t1;
+    return t3;
+}
+
+function stringTiempo(t){
+    let tiempo = "";
     let m = 0;
     let s = 0;
-    let tiempo = "";
 
-    while(t3 > 1000){
-        t3 = t3-1000;
+    while(t > 1000){
+        t = t-1000;
         s++;
     }
     while(s > 59){
@@ -27,17 +31,38 @@ function calculaTiempo(t1, t2){
     return tiempo;
 }
 
+function calculaPuntaje(tiempo,vidas){
+    let puntaje = 100000;
+    let intentos = 6 - vidas;
+    let puntajeString = "";
+    console.log(puntaje,"-",tiempo);
+    puntaje = puntaje - (tiempo / 2);
+    console.log(puntaje,"/",intentos);
+    puntaje = puntaje / intentos;
+
+    puntajeString = puntaje + " puntos.";
+    if (puntaje > 0) return puntajeString;
+    else return "Sin puntos.";
+    
+}
+
 let indice = 0;
 let palabraFormada = "";
 let palabraCorrecta = palabra[numeroRandom(0, palabra.length)];
 let existe = false;
 let vidas = 6;
 let correcta = false;
-let tiempoA = new Date();
+var tiempoA = ""
+let start = false;
 
 console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
 document.addEventListener("keypress", function(event) {
+    if (start == false){
+        tiempoA = new Date();
+        start = true;
+        console.log(start,tiempoA);
+    }
     if(indice < 6 && event.key != "Enter"){
         document.getElementById(indice).style.color = "white";
         console.log(indice,event.key);
@@ -50,12 +75,12 @@ document.addEventListener("keydown", function(event) {
     if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){    
         console.log(indice,event.key);
         indice--;
-        document.getElementById(indice).style.color = "transparent";
+        document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
     }
 
     if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){
         
-        vidas--;
+        
         document.getElementById("vidas").style.color = "transparent";
         if(vidas != 0){
             setTimeout(() => {
@@ -95,9 +120,12 @@ document.addEventListener("keydown", function(event) {
         }
         if(palabraFormada == palabraCorrecta){
             correcta = true;
-            let tiempoB = new Date();
-            let tiempo = calculaTiempo(tiempoA, tiempoB);
+            var tiempoB = new Date();
+            var tiempo = stringTiempo(calculaTiempo(tiempoA, tiempoB));
+            let puntaje = calculaPuntaje(calculaTiempo(tiempoA,tiempoB),vidas);
+
             document.getElementById("timer").innerHTML = tiempo;
+            document.getElementById("score").innerHTML = puntaje;
 
             //console.log(calculaTiempo(tiempoA, tiempoB));
             document.getElementById("body").style.backgroundColor = "#022100";
@@ -112,8 +140,10 @@ document.addEventListener("keydown", function(event) {
             setTimeout(() => {
                 document.getElementById("vidas").style.opacity = "1";
                 document.getElementById("timer").style.opacity = "1";
+                document.getElementById("score").style.opacity = "1";
             }, 800);
-        }   
+        }
+        else vidas--;   
 
         
 
