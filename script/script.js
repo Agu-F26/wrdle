@@ -54,6 +54,7 @@ let vidas = 6;
 let correcta = false;
 var tiempoA = ""
 let start = false;
+var correctas = [false, false, false, false, false, false];
 
 console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
@@ -66,13 +67,13 @@ document.addEventListener("keypress", function(event) {
     if(indice < 6 && event.key != "Enter"){
         document.getElementById(indice).style.color = "white";
         console.log(indice,event.key);
-        document.getElementById(indice).innerHTML = event.key;
+        if(correctas[indice] == false) document.getElementById(indice).innerHTML = event.key;
         indice++;           
     }        
 });
 
 document.addEventListener("keydown", function(event) {
-    if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){    
+    if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){
         console.log(indice,event.key);
         indice--;
         document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
@@ -96,6 +97,7 @@ document.addEventListener("keydown", function(event) {
             let letra = document.getElementById(i).innerHTML;
             palabraFormada = palabraFormada + letra;
             if(letra == palabraCorrecta[i]){
+                correctas[i] = true;
                 document.getElementById(i).style.color = "#19f002";
                 document.getElementById(i).style.backgroundColor = "#042101";
                 document.getElementById(i).style.border = "solid #19f002";
