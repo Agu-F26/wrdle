@@ -39,7 +39,7 @@ function calculaPuntaje(tiempo,vidas){
     puntaje = puntaje - (tiempo / 2);
     console.log(puntaje,"/",intentos);
     puntaje = puntaje / intentos;
-
+    puntaje = puntaje.toFixed(0);
     puntajeString = puntaje + " puntos.";
     if (puntaje > 0) return puntajeString;
     else return "Sin puntos.";
