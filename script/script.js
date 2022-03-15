@@ -65,17 +65,23 @@ document.addEventListener("keypress", function(event) {
         console.log(start,tiempoA);
     }
     if(indice < 6 && event.key != "Enter" && event.key != "Backspace"){
-        document.getElementById(indice).style.color = "white";
         console.log(indice,event.key);
         if(correctas[indice] == false){
             document.getElementById(indice).innerHTML = event.key;
-            indice++;           
+            document.getElementById(indice).style.color = "white";
+            indice++;          
         }
         else{
-            while(correctas[indice] == true){
-                indice++;
+            console.log("asdasd");
+            for(let i = indice; i < 7; i++){
+                if(correctas[i] == false){
+                    console.log(i, correctas[i] == false)
+                    document.getElementById(i).style.color = "white";
+                    indice = i;
+                    break;
+                }
             }
-        } 
+        }
     }        
 });
 
@@ -83,7 +89,7 @@ document.addEventListener("keydown", function(event) {
     if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){
         console.log(indice,event.key);
         console.log("xd");
-        if(correctas[indice-1] == false || indice > 5){
+        if(correctas[indice-1] == false){
             console.log("entre if");
             indice--;
             document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
@@ -101,7 +107,7 @@ document.addEventListener("keydown", function(event) {
         }
     }
 
-    if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){
+    if(event.key == "Enter" && vidas > 0 && !correcta && document.getElementById(5).innerHTML != "0"){
         
         
         document.getElementById("vidas").style.color = "transparent";
