@@ -54,6 +54,7 @@ let vidas = 6;
 let correcta = false;
 var tiempoA = ""
 let start = false;
+var correctas = [false, false, false, false, false, false];
 
 console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
@@ -63,22 +64,51 @@ document.addEventListener("keypress", function(event) {
         start = true;
         console.log(start,tiempoA);
     }
-    if(indice < 6 && event.key != "Enter"){
-        document.getElementById(indice).style.color = "white";
+    if(indice < 6 && event.key != "Enter" && event.key != "Backspace"){
         console.log(indice,event.key);
-        document.getElementById(indice).innerHTML = event.key;
-        indice++;           
+        if(correctas[indice] == false){
+            document.getElementById(indice).innerHTML = event.key;
+            document.getElementById(indice).style.color = "white";
+            indice++;          
+        }
+        else{
+            console.log("else ingreso");
+            for(let i = indice; i < 7; i++){
+                if(correctas[i] == false){
+                    console.log(i, correctas[i] == false)
+                    document.getElementById(i).innerHTML = event.key;
+                    document.getElementById(i).style.color = "white";
+                    indice = i + 1;
+                    break;
+                }
+            }
+        }
     }        
 });
 
 document.addEventListener("keydown", function(event) {
-    if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){    
+    if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){
         console.log(indice,event.key);
-        indice--;
-        document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
+        console.log("xd");
+        if(correctas[indice-1] == false){
+            console.log("entre if");
+            indice--;
+            document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
+        }
+        else{
+            console.log("asdasd");
+            for(let i = indice-1; i > -1; i--){
+                if(correctas[i] == false){
+                    console.log(i, correctas[i] == false)
+                    document.getElementById(i).style.color = "rgba(255,255,255,0.1)";
+                    indice = i;
+                    break;
+                }
+            }
+        }
     }
 
-    if(event.key == "Enter" && indice == 6 && vidas > 0 && !correcta){
+    if(event.key == "Enter" && vidas > 0 && !correcta && document.getElementById(5).innerHTML != "0"){
         
         
         document.getElementById("vidas").style.color = "transparent";
@@ -96,6 +126,7 @@ document.addEventListener("keydown", function(event) {
             let letra = document.getElementById(i).innerHTML;
             palabraFormada = palabraFormada + letra;
             if(letra == palabraCorrecta[i]){
+                correctas[i] = true;
                 document.getElementById(i).style.color = "#19f002";
                 document.getElementById(i).style.backgroundColor = "#042101";
                 document.getElementById(i).style.border = "solid #19f002";
@@ -118,6 +149,7 @@ document.addEventListener("keydown", function(event) {
                 }
             }
         }
+
         if(palabraFormada == palabraCorrecta){
             correcta = true;
             var tiempoB = new Date();
@@ -155,7 +187,7 @@ document.addEventListener("keydown", function(event) {
         console.log("Quedan",vidas,"vidas.");
     }
 
-    if(event.key == "Enter" && indice == 6 && vidas == 0){
+    if(event.key == "Enter" && vidas == 0 && document.getElementById(5).innerHTML != "0"){
         document.getElementById("vidas").style.backgroundColor = "transparent";
         document.getElementById("vidas").style.opacity = "0";
         for(let i = 0; i < 6; i++){
