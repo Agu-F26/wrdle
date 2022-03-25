@@ -46,6 +46,15 @@ function calculaPuntaje(tiempo,vidas){
     
 }
 
+function extraeBest(cookie){
+    let bestCookie = document.cookie
+    .split('; ')
+    .find(row => row.startsWith('best='))
+    .split('=')[1];
+
+    return bestCookie;
+}
+
 let indice = 0;
 let palabraFormada = "";
 let palabraCorrecta = palabra[numeroRandom(0, palabra.length)];
@@ -54,7 +63,11 @@ let vidas = 6;
 let correcta = false;
 var tiempoA = ""
 let start = false;
+let bestTime = -1;
 var correctas = [false, false, false, false, false, false];
+if(document.cookie != "")
+bestTime = extraeBest(document.cookie);
+else bestTime = 999999999999999;
 
 console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
@@ -153,11 +166,19 @@ document.addEventListener("keydown", function(event) {
         if(palabraFormada == palabraCorrecta){
             correcta = true;
             var tiempoB = new Date();
+
+            if(calculaTiempo(tiempoA, tiempoB) < bestTime) {
+                bestTime = calculaTiempo(tiempoA, tiempoB);
+                document.cookie = "best=" + bestTime + "; Secure;";
+                console.log("RECORD");
+            }
+
             var tiempo = stringTiempo(calculaTiempo(tiempoA, tiempoB));
             let puntaje = calculaPuntaje(calculaTiempo(tiempoA,tiempoB),vidas);
 
-            document.getElementById("timer").innerHTML = tiempo;
+            document.getElementById("timer").innerHTML = "Tiempo actual: " + tiempo;
             document.getElementById("score").innerHTML = puntaje;
+            document.getElementById("best-time").innerHTML = "Mejor tiempo: " + stringTiempo(bestTime);
 
             //console.log(calculaTiempo(tiempoA, tiempoB));
             document.getElementById("body").style.backgroundColor = "#022100";
