@@ -172,6 +172,7 @@ document.addEventListener("keydown", function(event) {
             setTimeout(() => {
                 document.getElementById("vidas").style.opacity = "1";
                 document.getElementById("timer").style.opacity = "1";
+                document.getElementById("best-time").style.opacity = "1";
                 document.getElementById("score").style.opacity = "1";
             }, 800);
         }
