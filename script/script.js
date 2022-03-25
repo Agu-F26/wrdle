@@ -35,9 +35,7 @@ function calculaPuntaje(tiempo,vidas){
     let puntaje = 100000;
     let intentos = 6 - vidas;
     let puntajeString = "";
-    console.log(puntaje,"-",tiempo);
     puntaje = puntaje - (tiempo / 2);
-    console.log(puntaje,"/",intentos);
     puntaje = puntaje / intentos;
     puntaje = puntaje.toFixed(0);
     puntajeString = puntaje + " puntos.";
@@ -69,26 +67,21 @@ if(document.cookie != "")
 bestTime = extraeBest(document.cookie);
 else bestTime = 999999999999999;
 
-console.log(palabraCorrecta); //ACORDATE DE BORRAR ESTO!!!
 
 document.addEventListener("keypress", function(event) {
     if (start == false){
         tiempoA = new Date();
         start = true;
-        console.log(start,tiempoA);
     }
     if(indice < 6 && event.key != "Enter" && event.key != "Backspace"){
-        console.log(indice,event.key);
         if(correctas[indice] == false){
             document.getElementById(indice).innerHTML = event.key;
             document.getElementById(indice).style.color = "white";
             indice++;          
         }
         else{
-            console.log("else ingreso");
             for(let i = indice; i < 7; i++){
                 if(correctas[i] == false){
-                    console.log(i, correctas[i] == false)
                     document.getElementById(i).innerHTML = event.key;
                     document.getElementById(i).style.color = "white";
                     indice = i + 1;
@@ -101,18 +94,13 @@ document.addEventListener("keypress", function(event) {
 
 document.addEventListener("keydown", function(event) {
     if(indice > 0 && event.key == "Backspace" && vidas > 0 && !correcta){
-        console.log(indice,event.key);
-        console.log("xd");
         if(correctas[indice-1] == false){
-            console.log("entre if");
             indice--;
             document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
         }
         else{
-            console.log("asdasd");
             for(let i = indice-1; i > -1; i--){
                 if(correctas[i] == false){
-                    console.log(i, correctas[i] == false)
                     document.getElementById(i).style.color = "rgba(255,255,255,0.1)";
                     indice = i;
                     break;
@@ -132,8 +120,6 @@ document.addEventListener("keydown", function(event) {
             }, 400);
         }
         
-        
-
         palabraFormada = "";
         for(let i = 0; i < 6; i++){
             let letra = document.getElementById(i).innerHTML;
@@ -170,7 +156,6 @@ document.addEventListener("keydown", function(event) {
             if(calculaTiempo(tiempoA, tiempoB) < bestTime) {
                 bestTime = calculaTiempo(tiempoA, tiempoB);
                 document.cookie = "best=" + bestTime + "; Secure;";
-                console.log("RECORD");
             }
 
             var tiempo = stringTiempo(calculaTiempo(tiempoA, tiempoB));
@@ -180,12 +165,10 @@ document.addEventListener("keydown", function(event) {
             document.getElementById("score").innerHTML = puntaje;
             document.getElementById("best-time").innerHTML = "Mejor tiempo: " + stringTiempo(bestTime);
 
-            //console.log(calculaTiempo(tiempoA, tiempoB));
             document.getElementById("body").style.backgroundColor = "#022100";
             document.getElementById("vidas").style.backgroundColor = "transparent";
             document.getElementById("vidas").style.opacity = "0";
             setTimeout(() => {
-                console.log(document.getElementById("vidas").innerHTML)
                 document.getElementById("vidas").innerHTML = "a"
                 document.getElementById("vidas").innerHTML = "<a href=\"\"><img src=\"style/arrow-repeat.svg\" alt=\"\"></a>"
             }, 400);
@@ -197,16 +180,7 @@ document.addEventListener("keydown", function(event) {
                 document.getElementById("score").style.opacity = "1";
             }, 800);
         }
-        else vidas--;   
-
-        
-
-        
-
-        console.log("Correcta:",palabraFormada == palabraCorrecta);
-        console.log("Forma:",palabraFormada);
-        console.log("Era:",palabraCorrecta);
-        console.log("Quedan",vidas,"vidas.");
+        else vidas--;
     }
 
     if(event.key == "Enter" && vidas == 0 && document.getElementById(5).innerHTML != "0"){
@@ -238,10 +212,6 @@ document.addEventListener("keydown", function(event) {
         setTimeout(() => {
             document.getElementById("vidas").style.opacity = "1";
         }, 800);
-        
-        
-
-
     }
 });
 
