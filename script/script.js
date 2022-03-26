@@ -53,6 +53,15 @@ function extraeBest(cookie){
     return bestCookie;
 }
 
+function setIndex(arregloCorrectas){
+    let ultimaIncorrecta = -1;
+    for(let i = 0; i < arregloCorrectas.length; i++){
+        if(arregloCorrectas[i] == false) ultimaIncorrecta = i+1;
+    }
+    return ultimaIncorrecta;
+}
+
+
 let indice = 0;
 let palabraFormada = "";
 let palabraCorrecta = palabra[numeroRandom(0, palabra.length)];
@@ -67,6 +76,9 @@ if(document.cookie != "")
 bestTime = extraeBest(document.cookie);
 else bestTime = 999999999999999;
 
+console.log(palabraCorrecta);
+
+document.getElementById(0).style.border = "solid white";
 
 document.addEventListener("keypress", function(event) {
     if (start == false){
@@ -75,20 +87,46 @@ document.addEventListener("keypress", function(event) {
     }
     if(indice < 6 && event.key != "Enter" && event.key != "Backspace"){
         if(correctas[indice] == false){
+            //console.log(indice);
             document.getElementById(indice).innerHTML = event.key;
             document.getElementById(indice).style.color = "white";
-            indice++;          
-        }
+            indice++;
+            console.log(indice,"++");
+            if(correctas[indice] != true && indice < 6){
+                document.getElementById(indice).style.border = "solid white";
+                document.getElementById(indice - 1).style.border = "solid #000000";
+            }
+            else{
+                document.getElementById(indice-1).style.border = "solid #000000";
+                for(let i = indice; i < 7; i++){
+                    if(correctas[i] == false){
+                        //document.getElementById(i).innerHTML = event.key;
+                        //document.getElementById(i).style.color = "white";
+                        indice = i;
+                        document.getElementById(indice).style.border = "solid white";
+                        if(correctas[indice+1] != true && indice < 5) document.getElementById(indice + 1).style.border = "solid #000000";
+                        break;
+                    }
+                }
+            }
+            
+            //document.getElementById(indice).style.border = "solid white";
+            //document.getElementById(indice - 1).style.border = "solid #7a7a7a";
+        }/*
         else{
+            console.log(indice);
+            document.getElementById(indice).style.border = "solid #7a7a7a";
             for(let i = indice; i < 7; i++){
                 if(correctas[i] == false){
                     document.getElementById(i).innerHTML = event.key;
                     document.getElementById(i).style.color = "white";
                     indice = i + 1;
+                    document.getElementById(indice).style.border = "solid white";
+                    if(correctas[indice+1] != true && indice < 5) document.getElementById(indice + 1).style.border = "solid #7a7a7a";
                     break;
                 }
             }
-        }
+        }*/
     }        
 });
 
@@ -97,12 +135,18 @@ document.addEventListener("keydown", function(event) {
         if(correctas[indice-1] == false){
             indice--;
             document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
+            document.getElementById(indice).style.border = "solid white";
+            if(correctas[indice+1] != true && indice < 5) document.getElementById(indice + 1).style.border = "solid #000000";
+            //document.getElementById(indice + 1).style.border = "solid #000000";
         }
         else{
+            document.getElementById(indice).style.border = "solid #000000";
             for(let i = indice-1; i > -1; i--){
                 if(correctas[i] == false){
                     document.getElementById(i).style.color = "rgba(255,255,255,0.1)";
                     indice = i;
+                    document.getElementById(indice).style.border = "solid white";
+                    if(correctas[indice+1] != true && indice < 5) document.getElementById(indice + 1).style.border = "solid #000000";
                     break;
                 }
             }
@@ -148,6 +192,13 @@ document.addEventListener("keydown", function(event) {
                 }
             }
         }
+
+        indice = setIndex(correctas);
+        //document.getElementById(indice-1).style.border = "solid white";
+
+        //ACA VA LA FUNCION PARA RESETEAR EL INDICE
+
+
 
         if(palabraFormada == palabraCorrecta){
             correcta = true;
