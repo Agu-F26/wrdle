@@ -1,7 +1,6 @@
 function numeroRandom(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
-}
-
+} 
 function calculaTiempo(t1, t2){
     let t3 = t2 - t1;
     return t3;
@@ -100,8 +99,6 @@ document.addEventListener("keypress", function(event) {
                 document.getElementById(indice-1).style.border = "solid #000000";
                 for(let i = indice; i < 7; i++){
                     if(correctas[i] == false){
-                        //document.getElementById(i).innerHTML = event.key;
-                        //document.getElementById(i).style.color = "white";
                         indice = i;
                         document.getElementById(indice).style.border = "solid white";
                         if(correctas[indice+1] != true && indice < 5) document.getElementById(indice + 1).style.border = "solid #000000";
@@ -109,24 +106,8 @@ document.addEventListener("keypress", function(event) {
                     }
                 }
             }
-            
-            //document.getElementById(indice).style.border = "solid white";
-            //document.getElementById(indice - 1).style.border = "solid #7a7a7a";
-        }/*
-        else{
-            console.log(indice);
-            document.getElementById(indice).style.border = "solid #7a7a7a";
-            for(let i = indice; i < 7; i++){
-                if(correctas[i] == false){
-                    document.getElementById(i).innerHTML = event.key;
-                    document.getElementById(i).style.color = "white";
-                    indice = i + 1;
-                    document.getElementById(indice).style.border = "solid white";
-                    if(correctas[indice+1] != true && indice < 5) document.getElementById(indice + 1).style.border = "solid #7a7a7a";
-                    break;
-                }
-            }
-        }*/
+
+        }
     }        
 });
 
@@ -137,7 +118,6 @@ document.addEventListener("keydown", function(event) {
             document.getElementById(indice).style.color = "rgba(255,255,255,0.1)";
             document.getElementById(indice).style.border = "solid white";
             if(correctas[indice+1] != true && indice < 5) document.getElementById(indice + 1).style.border = "solid #000000";
-            //document.getElementById(indice + 1).style.border = "solid #000000";
         }
         else{
             document.getElementById(indice).style.border = "solid #000000";
@@ -194,11 +174,6 @@ document.addEventListener("keydown", function(event) {
         }
 
         indice = setIndex(correctas);
-        //document.getElementById(indice-1).style.border = "solid white";
-
-        //ACA VA LA FUNCION PARA RESETEAR EL INDICE
-
-
 
         if(palabraFormada == palabraCorrecta){
             correcta = true;
