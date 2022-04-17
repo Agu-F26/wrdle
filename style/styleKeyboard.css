@@ -3,6 +3,11 @@
     color: white;
 }
 
+#output{
+    text-align: center;
+    font-size: 30px;
+}
+
 .container-keyboard{
     text-align:center;
     margin-top: 1rem;
