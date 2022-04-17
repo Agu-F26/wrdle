@@ -1,9 +1,16 @@
+var sigoSinSaber = false;
+var anterior = "";
 function noTengoIdea(value){
-    document.getElementById("output").innerHTML = value;
+    if (sigoSinSaber){
+        anterior = anterior + value;
+        document.getElementById("output").innerHTML = anterior;
+    }
+    else{
+        document.getElementById("output").innerHTML = value;
+        anterior = value;
+    }
     console.log(value);
+    sigoSinSaber = true;
 }
-
-//document.getElementById("0").onclick = noTengoIdea();
-
 
 console.log("funciona");
