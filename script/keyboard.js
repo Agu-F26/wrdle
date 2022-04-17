@@ -9,8 +9,5 @@ function noTengoIdea(value){
         document.getElementById("output").innerHTML = value;
         anterior = value;
     }
-    console.log(value);
     sigoSinSaber = true;
 }
-
-console.log("funciona");

@@ -2,3 +2,13 @@
     background-color: #424242;
     color: white;
 }
+
+.container-keyboard{
+    text-align:center;
+    margin-top: 1rem;
+}
+
+.container-keyboard button{
+    font-size: 40px;
+    margin: .4rem;
+}
