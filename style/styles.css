@@ -136,4 +136,9 @@ body{
         width: 64px;
         text-align: center;
     }
+
+    .header{
+        width: 100%;
+    }
+
 }
