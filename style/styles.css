@@ -153,18 +153,19 @@ body{
 
     .container-keyboard{
         display: flex;
+        flex-direction: column;
         background-color: red;
-        align-items: center;
-        flex-grow: 1;
-        padding: 6rem;
-        width: 58%;
-        margin-top: -10rem;
-    }
-
-    .keyboard{
-        color: white;
         text-align: center;
         width: 100%;
+        padding: 2rem 0;
+        margin-top: -10rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .container-keyboard button{
+        font-size: 22px;
+        margin: .4rem;
     }
 
     .container-general{
