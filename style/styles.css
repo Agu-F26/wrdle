@@ -126,18 +126,23 @@ body{
 
 /*====================== MOBILE ======================*/
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
+    #body{
+        background-color: green;
+    }
+
+
     .bloque{
         background-color: #262626;
         border: solid #000000;
         color: transparent;
         border-radius: 1rem;
-        margin: .15rem;
+        margin: .20em;
         font-size: 55px;
         padding: 0;
         transition: ease-in-out 0ms;
-        height: 67px;
-        width: 64px;
+        height: 2.5em;
+        width: 2.5em;
         text-align: center;
     }
 
@@ -149,12 +154,16 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
+        height: 100%;
+        background-color: pink;
     }
 
     .container-keyboard{
         display: flex;
+        position: fixed;
+        bottom: 35em;
         flex-direction: column;
-        /*background-color: red;*/
+        background-color: red;
         text-align: center;
         width: 100%;
         padding: 2rem 0;
@@ -165,9 +174,10 @@ body{
     }
 
     .container-keyboard button{
-        font-size: 25px;
+        font-size: 5em;
         margin: 0.27rem;
-        width: 30px;
+        margin-top: 2rem;
+        width: 1em;
     }
 
     .container-general{
